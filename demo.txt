@@ -1,12 +1,11 @@
-; Combat Script Demo
-
-in1 = prompt() ;prompts for user input
-in2 = prompt()
-
-num1 = value(in1) ; turns in1 into integer
-num2 = value(in2) ; turns in1 into integer
-
-
-print num1 + num2
-
-;So you can't combine strings and integers in combat script lol, thanks for watching!`
+: Command Tool written in Combat Script
+x = 3
+cmd = ""
+event runcmd {
+    command cmd 
+}
+while x > 1 {
+    echo "command> "
+    cmd = prompt()
+    fire runcmd
+}
