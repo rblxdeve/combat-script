@@ -1,6 +1,6 @@
 # combat-script
 
-Combat Script is a toy programming language designed to be simple and easy to use. It has only 9 keywords, including "if", "and", "or", "else", "break", "event", "fire", and "while", as well as a "print" keyword for outputting text or variables to the console. The language is intended for simple scripting tasks and is not meant for advanced projects. Its minimalistic design makes it easy for beginners to learn and use.
+Combat Script is a toy programming language designed to be simple and easy to use. It has only 9 keywords, including "if", "and", "or", "else", "break", "event", "fire", and "while", as well as a "print" keyword for outputting text or variables to the console. The language is intended for simple scripting tasks and is not meant for advanced projects. Its minimalistic design makes it easy for beginners to learn and use. The only issue is that reserved keywords are extremely reserved because keywords can't be used as variables or names like if I name my variable "Command" or "COMMAND" or "command" it will interpret the variable names as keywords.
 
 It also comes with some built-in functions such as "value()" and "string()".
 
@@ -26,3 +26,4 @@ It also comes with some built-in functions such as "value()" and "string()".
 Note: Do not try to use this language for advanced projects like, making 3d games or stuff like that. It is only a toy.
 
 Crediting: When you do modify this code, please credit me or at least edit the code to the combat.py script of this repository.
+
