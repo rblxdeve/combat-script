@@ -14,6 +14,10 @@ It also comes with some built-in functions such as "value()" and "string()".
 * fire    - triggers an event in the code
 * while   - is used to create a loop that executes as long as a certain condition is true.
 * command - is used to execute commands of the operating system.
+
+## Syntax ##
+{ } : + - * / = != >= <= == -= += *= ,
+
 ## Built-in functions ##
 * prompt  - prompts user for an input
 * value   - turns a string for example a prompt into an integer
