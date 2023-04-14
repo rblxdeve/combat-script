@@ -1,8 +1,8 @@
-# combat script by v4c10xz
+# combat script by v4c10xz [version 2 2023]
 # (inspired by slu4 on youtube, i followed his tutorial!)
 def look():								
 	global pc								
-	if source[pc] == ';':
+	if source[pc] == ':':
 		while source[pc] != '\n' and source[pc] != '\0': pc += 1		
 	return source[pc]
 
@@ -130,7 +130,7 @@ def dowhile(act):
 	while booleanexpression(local): block(local); pc = pc_while
 	block([False])																		
 
-def doifelse(act):
+def ifelse(act):
 	b = booleanexpression(act)
 	if act[0] and b: block(act)												
 	else: block([False])
@@ -139,12 +139,12 @@ def doifelse(act):
 		if act[0] and not b: block(act)
 		else: block([False])
 
-def dogosub(act):
+def gosub(act):
 	global pc
 	ident = takenextalnum()
 	if ident not in variable or variable[ident][0] != 'p': error("unknown subroutine")
 	ret = pc; pc = variable[ident][1]; block(act); pc = ret		
-def dosubdef():
+def dosub():
 	global pc
 	ident = takenextalnum()
 	if ident == "": error ("missing subroutine identifier")
@@ -156,22 +156,30 @@ def doassign(act):
 	e = expression(act)
 	if act[0] or ident not in variable: variable[ident] = e		
 
-def dobreak(act):
+def stop(act):
 	if act[0]: act[0] = False													
 
-def doprint(act):
+def echo(act):
 	while True:																							
 		e = expression(act)
 		if act[0]: print(e[1], end="")
 		if not takenext(','): return
-		
+import os 
+def cmd(act):
+	while True:																							
+		e = expression(act)
+		if act[0]: os.system(e[1], end="")
+		if not takenext(','): return
+
+
 def statement(act):
-	if takestring("print"): doprint(act)
-	elif takestring("if"): doifelse(act)
+	if takestring("echo"): echo(act)
+	elif takestring("if"): ifelse(act)
 	elif takestring("while"): dowhile(act)
-	elif takestring("break"): dobreak(act) 
-	elif takestring("fire"): dogosub(act)
-	elif takestring("event"): dosubdef()
+	elif takestring("stop"): stop(act) 
+	elif takestring("fire"): gosub(act)
+	elif takestring("event"): dosub()
+	elif takestring("command"): cmd(act)
 	else: doassign(act)							
 
 def block(act):
