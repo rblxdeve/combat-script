@@ -1,4 +1,4 @@
-# combat script by v4c10xz [version 2 2023]
+# combat script by v4c10xz [version 3]
 # (inspired by slu4 on youtube, i followed his tutorial!)
 def look():								
 	global pc								
@@ -164,11 +164,21 @@ def echo(act):
 		e = expression(act)
 		if act[0]: print(e[1], end="")
 		if not takenext(','): return
-import os 
+import os, pywhatkit , webbrowser
+def gotolink(act):
+	while True:																							
+		e = expression(act)
+		if act[0]: webbrowser.open_new_tab(e[1])
+		if not takenext(','): return
 def cmd(act):
 	while True:																							
 		e = expression(act)
-		if act[0]: os.system(e[1], end="")
+		if act[0]: os.system(e[1])
+		if not takenext(','): return
+def search(act):
+	while True:																							
+		e = expression(act)
+		if act[0]: pywhatkit.search(e[1])
 		if not takenext(','): return
 
 
@@ -180,6 +190,7 @@ def statement(act):
 	elif takestring("fire"): gosub(act)
 	elif takestring("event"): dosub()
 	elif takestring("command"): cmd(act)
+	elif takestring("search"): search(act)
 	else: doassign(act)							
 
 def block(act):
