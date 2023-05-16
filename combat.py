@@ -106,7 +106,7 @@ def string(act):
 	elif takestring("string("):												
 		s = str(mathexpression(act))
 		if not takenext(')'): error("missing ')'")
-	elif takestring("prompt()"):
+	elif takestring("prompt"):
 		if act[0]: s = input()
 	else: 
 		ident = takenextalnum()
@@ -164,7 +164,7 @@ def echo(act):
 		e = expression(act)
 		if act[0]: print(e[1], end="")
 		if not takenext(','): return
-import os, pywhatkit , webbrowser
+import os , webbrowser
 def gotolink(act):
 	while True:																							
 		e = expression(act)
@@ -178,9 +178,9 @@ def cmd(act):
 def search(act):
 	while True:																							
 		e = expression(act)
-		if act[0]: pywhatkit.search(e[1])
+		if act[0]: webbrowser.open_new_tab("https://bing.com/search/?q="+e[1])
 		if not takenext(','): return
-
+	
 
 def statement(act):
 	if takestring("echo"): echo(act)
@@ -191,6 +191,7 @@ def statement(act):
 	elif takestring("event"): dosub()
 	elif takestring("command"): cmd(act)
 	elif takestring("search"): search(act)
+	elif takestring("ignore"): pass
 	else: doassign(act)							
 
 def block(act):
@@ -217,4 +218,3 @@ except: print("error: can't find source file \'" + sys.argv[1] + "\'."); exit(1)
 source = f.read() + '\0'; f.close()																			
 
 program()
-
