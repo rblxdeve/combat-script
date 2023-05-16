@@ -6,6 +6,6 @@ event runcmd {
 }
 while x > 1 {
     echo "command> "
-    cmd = prompt()
+    cmd = prompt
     fire runcmd
 }
