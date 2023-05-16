@@ -15,12 +15,12 @@ It also comes with some built-in functions such as "value()" and "string()".
 * while   - is used to create a loop that executes as long as a certain condition is true.
 * command - is used to execute commands of the operating system.
 * search  - is used to search stuff on the internet using your browser.
-
+* prompt  - prompts user for an input
+* 
 ## Syntax ##
 { } : + - * / = != >= <= == -= += *= ,
 
 ## Built-in functions ##
-* prompt  - prompts user for an input
 * value   - turns a string for example a prompt into an integer
 * string  - we all know what this does
 
